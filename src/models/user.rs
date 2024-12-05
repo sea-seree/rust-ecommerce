@@ -1,6 +1,6 @@
-// src/models/user.rs
 use sea_orm::entity::prelude::*;
 use serde::{Deserialize, Serialize};
+use chrono::{DateTime, Utc};
 
 #[derive(Clone, Debug, PartialEq, DeriveEntityModel, Serialize, Deserialize)]
 #[sea_orm(table_name = "users")]
@@ -10,7 +10,7 @@ pub struct Model {
     pub username: String,
     pub email: String,
     pub password: String,
-    pub created_at: DateTime,
+    pub created_at: DateTime<Utc>,
 }
 
 // กำหนด Relationship และ Column type

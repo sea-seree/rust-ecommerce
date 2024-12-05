@@ -39,6 +39,7 @@ impl MigrationTrait for Migration {
                         ColumnDef::new(Users::CreatedAt)
                             .date_time()
                             .not_null()
+                            .default(Expr::current_timestamp()) // Default เป็นเวลาปัจจุบัน
                     )
                     .to_owned()
             )
@@ -54,10 +55,16 @@ impl MigrationTrait for Migration {
 
 #[derive(DeriveIden)]
 enum Users {
+    #[sea_orm(table_name = "users")]
     Table,
+    #[sea_orm(column_name = "id")]
     Id,
+    #[sea_orm(column_name = "username")]
     Username,
+    #[sea_orm(column_name = "email")]
     Email,
+    #[sea_orm(column_name = "password")]
     Password,
-    CreatedAt
+    #[sea_orm(column_name = "created_at")]
+    CreatedAt,
 }

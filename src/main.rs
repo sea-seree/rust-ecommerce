@@ -1,5 +1,6 @@
+// mod controllers;
 use sea_orm::{Database, DbErr};
-use dotenvy::dotenv;
+use dotenv::dotenv;
 use std::env;
 
 #[tokio::main]
