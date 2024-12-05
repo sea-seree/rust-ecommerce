@@ -1,0 +1,2 @@
+[migration]
+database_url = "postgresql://seaeiei:12345678Ab@localhost/rust_ecom"

@@ -3,20 +3,36 @@ name = "rust-ecommerce"
 version = "0.1.0"
 edition = "2021"
 
+
+[lib]
+name = "migration"
+path = "src/lib.rs"
+
 [dependencies]
+
+#  DATABASE_DRIVER
+migration = { path = "migration" }
+sqlx = { version = "0.8.2", features = ["postgres", "runtime-tokio"] } 
+
 
 # Web framework
 actix-web = "4.0"
 
 # ORM
-sea-orm = { version = "1.1.2", features = ["postgresql", "runtime-tokio-native-tls"] }
+sea-orm = { version = "1.1.2", features = [
+    "sqlx-postgres", 
+    "runtime-tokio-native-tls"
+] }
 sea-orm-migration = "1.1.2"
+async-trait = "0.1"
+
 
 # Validation
 validator = "0.19.0" 
 
 # Async Runtime
 tokio = { version = "1", features = ["full"] }
+tokio-postgres = "0.7"
 
 # Utility
 serde = { version = "1.0", features = ["derive"] } 
